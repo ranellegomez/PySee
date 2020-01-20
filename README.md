@@ -14,8 +14,8 @@
 
  1. Download PyRead.py.
  2. On your terminal CD into the directory containing the file. On macOS, this would likely be _/Users/[your_user_name]/Downloads/_ ; accordingly input ```cd downloads```.
- 3. A user interface will appear welcoming you with language options. Select the appropriate language of the images.
- 4. A window will then appear asking which photos you want to select. You can select more than one photo in the same folder.
+ 3. Input ```python PyRead.py```. A user interface should appear welcoming you with language options. Select the appropriate language of the images.
+ 4. A window should then appear asking which photos you want to select. You can select more than one photo in the same folder.
 
  ### The design process and observations.
 
