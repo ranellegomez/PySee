@@ -1,4 +1,4 @@
-# PySee
+# PySee (In-Progress)
  A Python program that takes images as inputs and uses OCR to return a file that contains the texts from those images along with the original photos.
 
  # Setup
