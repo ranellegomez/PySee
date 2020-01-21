@@ -7,43 +7,54 @@ import random
 
 class Scanner:
     """Contains the various methods to to convert images to text of different languages."""
+    def img_to_english(self, eng_images):
+        for eng_img in eng_images:
+            ocr_readable_eng_img = Image.open(eng_img)
+            converted_eng_img = pt.image_to_string(ocr_readable_eng_img)
+            print(pt.image_to_string(converted_eng_img))
+            return converted_eng_img
 
-    def img_to_english(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(ocr_readable_img)
+    def img_to_spanish(self, spa_images):
+        for spa_img in spa_images:
+            ocr_readable_spa_img = Image.open(spa_img)
+            converted_spa_txt = pt.image_to_string(ocr_readable_spa_img, lang='spa')
+            print(converted_spa_txt)
+            return converted_spa_txt
 
-    def img_to_spanish(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(pt.image_to_string(ocr_readable_img, lang='spa'))
+    def img_to_french(self, fra_images):
+        for fra_img in fra_images:
+            ocr_readable_fra_img = Image.open(fra_img)
+            converted_fra_txt = pt.image_to_string(ocr_readable_fra_img, lang='fra')
+            print(converted_fra_txt)
+            return converted_fra_txt
 
-    def img_to_french(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(pt.image_to_string(ocr_readable_img, lang='fra'))
+    def img_to_german(self, deu_images):
+        for deu_img in deu_images:
+            ocr_readable_deu_img = Image.open(deu_img)
+            converted_deu_txt = pt.image_to_string(ocr_readable_deu_img, lang='deu')
+            print(converted_deu_txt)
+            return converted_deu_txt
 
-    def img_to_german(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(pt.image_to_string(ocr_readable_img, lang='deu'))
+    def img_to_japanese(self, jpn_images):
+        for jpn_img in jpn_images:
+            ocr_readable_jpn_img = Image.open(jpn_img)
+            converted_jpn_txt = pt.image_to_string(ocr_readable_jpn_img, lang='jpn')
+            print(converted_jpn_txt)
+            return converted_jpn_txt
 
-    def img_to_japanese(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(pt.image_to_string(ocr_readable_img, lang='jpn'))
-
-    def img_to_chinese(self, images):
-        for img in images:
-            ocr_readable_img = Image.open(img)
-            print(pt.image_to_string(ocr_readable_img, lang='chi_sim'))
+    def img_to_chinese(self, chi_sim_images):
+        for chi_sim_img in chi_sim_images:
+            ocr_readable_chi_sim_img = Image.open(chi_sim_img)
+            converted_chi_sim_txt = pt.image_to_string(ocr_readable_chi_sim_img, lang='chi_sim')
+            print(converted_chi_sim_txt)
+            return converted_chi_sim_txt
 
 if __name__ == '__main__':
     obj = Scanner()
 
     while True:
         selection = input('Which language would you like to convert your image to text?\' 1. English 2. Spanish 3. '
-                          'French 4. German 5. Japanese 6. Chinese 7. Exit\n')
+                          'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
         root = tk.Tk()
         root.withdraw()
         image_selection = tk.filedialog.askopenfilenames()

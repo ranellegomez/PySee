@@ -23,7 +23,9 @@
 
  At first, I originally wrote the code for the user inputting each file by name, including the entire path (e.g., _/Users/[your_user_name]/spring2020/lecture_notes/images_). When testing my methods inside the class, I found this burdensome, as I had to type those file paths every time I tested a new image. I then decided to include a GUI to allow the user to select multiple images using his familiar OS interface with ```tkinter.filedialog.askopenfilenames()```. This easily streamlined my testing workflow, and I was able to test five images per language under one minute rather than one image every three minutes. This will be of great help for anyone wanting to experiment with the program themselves.
 
- I renamed the parameters ```images``` inside the class methods so they do not get confused for the ```img``` variables in __main__. I plan on renaming the variables inside each language method, so they represent their respective languages. This helps with debugging and avoids conflating variables of different scopes.
+ I renamed the parameters ```images``` inside the class methods so they do not get confused for the ```img``` variables in __main__. I also renamed the variables inside each language method, so they represent their respective languages. This helps with debugging and helps avoid conflating variables. 
+ 
+ During unit testing I had issues comparing string return values of the methods with with the actual expected results. I then found that I did not have return statements; only print statements. I added return statements for the converted texts for unit testing and the possibility of these functions being used in abstraction as higher-order functions. 
 
  In the future, I plan on adding PDF as a feature, where the PDF contains the scanned images along with the output text. I also may use ```ImageEnhance``` if my tests show that it improves average accuracy of output.
 
