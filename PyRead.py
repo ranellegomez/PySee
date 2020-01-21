@@ -11,7 +11,7 @@ class Scanner:
         for eng_img in eng_images:
             ocr_readable_eng_img = Image.open(eng_img)
             converted_eng_img = pt.image_to_string(ocr_readable_eng_img)
-            print(pt.image_to_string(converted_eng_img))
+            print(converted_eng_img)
             return converted_eng_img
 
     def img_to_spanish(self, spa_images):
