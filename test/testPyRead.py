@@ -1,12 +1,20 @@
 import PyRead as pr
+from PIL import Image
+import sys
+import os
 import unittest
 
 
 class TestPyRead(unittest.TestCase):
     # These test cases are still being written.
     def test_english(self):
-        test_img = '.../PySee/test/images/English/tnol8.jpg'
-        self.assertEqual("ONE DOES NOT'SIMPLY, Pie heey 7", pr.Scanner.img_to_english(self, test_img))
+        curr_directory = sys.path[0]
+        test_img = os.path.join(curr_directory, 'images/English/favoritethings.png')
+        image = Image.open(test_img)
+        expected = """Staying up for the 61B discussion signup, looking at increased grade bins, writing code: these
+are a few of my favorite things."""
+        print(pr.Scanner.img_to_english(self, image))
+        self.assertEqual(expected, pr.Scanner.img_to_english(self, image))
 
     def test_spanish(self):
         self.assertEqual(True, False)
