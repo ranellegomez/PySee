@@ -65,7 +65,7 @@ class Scanner:
 
     def img_to_chinese(self, chi_sim_images):
         if not isinstance(chi_sim_images, collections.Iterable):
-            converted_chi_sim_img = pt.image_to_string(chi_sim_images, lang='jpn')
+            converted_chi_sim_img = pt.image_to_string(chi_sim_images, lang='chi_sim')
             print(converted_chi_sim_img)
             return converted_chi_sim_img
         for chi_sim_img in chi_sim_images:
