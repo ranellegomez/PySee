@@ -30,9 +30,9 @@
  In the future, I plan on adding PDF as a feature, where the PDF contains the scanned images along with the output text. I also may use ```ImageEnhance``` if my tests show that it improves average accuracy of output.
 
   ### Limitations
-  Without a doubt that OCR is a software engineering marvel. Rather than hiring some to tediously read and retype an 800-page-book, OCR has allowed us to efficiently convert images to texts, giving access to numerous classics that can be opened as documents to parse.
+  Without a doubt, OCR is a software-engineering marvel. Gone are the days of hiring someone to tediously read and retype hundred-year-old scripts, the technology has allowed us to efficiently convert images to texts, giving access to numerous classical writings that can be opened as documents to parse while allowing human resources to be allocated to other causes.
 
-  In my testing, however, I found that the training data provided to the tesseract algorithm was sufficient for mostly ideally-lit situations and characters that hardly digress from the training data. When testing the handwritten "¡Todo lo que hago es ganar" in Spanish, I found that even after varying the lighting, changing the crop of the photo with no other texts, and even constraining it to a screenshot of the handwritten text could not yield the "¡," which is crucial for interpreting and differentiating between other commonly-used characters among various languages.
+  In my testing, however, I found that the training data provided to the tesseract algorithm was sufficient for mostly ideally-lit situations and characters with little digression from the training data. When testing the handwritten "¡Todo lo que hago es ganar" in Spanish, I found that even after varying the lighting, changing the crop of the photo with no other texts, and even constraining it to a screenshot of the handwritten text could not yield the "¡," which is crucial for interpreting and differentiating between other commonly-used characters among various languages.
 
  ## References
 1. https://pypi.org/project/pytesseract/
