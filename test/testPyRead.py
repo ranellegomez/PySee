@@ -17,7 +17,25 @@ are a few of my favorite things."""
         self.assertEqual(expected, pr.Scanner.img_to_english(self, image))
 
     def test_spanish(self):
-        self.assertEqual(True, False)
+        curr_directory = sys.path[0]
+        test_img = os.path.join(curr_directory, 'images/Spanish/menudo.png')
+        image = Image.open(test_img)
+        expected = 'Me gusta comer menudo a menudo.'
+        print(pr.Scanner.img_to_spanish(self, image))
+        self.assertEqual(expected, pr.Scanner.img_to_spanish(self, image))
+
+        curr_directory = sys.path[0]
+        test_img = os.path.join(curr_directory, 'images/Spanish/menudo.png')
+        image = Image.open(test_img)
+        expected = 'Me gusta comer menudo a menudo.'
+        print(pr.Scanner.img_to_spanish(self, image))
+        self.assertEqual(expected, pr.Scanner.img_to_spanish(self, image))
+
+        test_img_2 = os.path.join(curr_directory, 'images/Spanish/marta.png')
+        image_2 = Image.open(test_img_2)
+        expected_2 = 'Marta tiene dos marcapasos pero solo tiene un corazón.'
+        print(pr.Scanner.img_to_spanish(self, image))
+        self.assertEqual(expected_2, pr.Scanner.img_to_spanish(self, image_2))
 
     def test_french(self):
         self.assertEqual(True, False)
