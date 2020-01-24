@@ -8,6 +8,7 @@ import random
 
 class Scanner:
     """Contains the various methods to to convert images to text of different languages."""
+
     def img_to_english(self, eng_images):
         if not isinstance(eng_images, collections.Iterable):
             converted_eng_img = pt.image_to_string(eng_images)
@@ -74,9 +75,9 @@ class Scanner:
             print(converted_chi_sim_txt)
             return converted_chi_sim_txt
 
-if __name__ == '__main__':
-    obj = Scanner()
 
+def main():
+    obj = Scanner()
     while True:
         selection = input('Which language would you like to convert your image to text?\' 1. English 2. Spanish 3. '
                           'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
@@ -103,3 +104,7 @@ if __name__ == '__main__':
             goodbye = ['¡Adiós!', 'Goodbye!', 'じゃね。', 'Tschüss!', 'Au revoir!', '再见。']
             print(random.choice(goodbye))
             break
+
+
+if __name__ == '__main__':
+    main()
