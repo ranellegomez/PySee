@@ -16,13 +16,11 @@ class Scanner:
         """Takes a string from one of the Scanner methods and returns a doc with
         both the original image and the transcribed text."""
         result = Document()
+        print(type('dec7.png'))
+        print(type(images))
         result.add_heading('Results of OCR scan.', 0)
-        if not isinstance(images, collections.Iterable):
-            result.add_picture(images)
-        else:
-            for img in images:
-                result.add_picture(img)
-                result.add_paragraph(txt)
+        result.add_picture('dec7.png')
+        result.add_paragraph(txt)
         result.save('translation.docx')
 
     def img_to_english(self, eng_images):
@@ -34,7 +32,8 @@ class Scanner:
             ocr_readable_eng_img = Image.open(eng_img)
             converted_eng_img = pt.image_to_string(ocr_readable_eng_img)
             print(converted_eng_img)
-            Scanner.string_to_doc(converted_eng_img, eng_images)
+            #pic = io.BytesIO(eng_img)
+            Scanner.string_to_doc(self, converted_eng_img, eng_images)
             return converted_eng_img
 
     def img_to_spanish(self, spa_images):
