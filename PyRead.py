@@ -4,10 +4,26 @@ import tkinter as tk
 from tkinter import filedialog
 import collections
 import random
+import io
+from docx import Document
+
 
 
 class Scanner:
     """Contains the various methods to to convert images to text of different languages."""
+
+    def string_to_doc(self, txt, images=None):
+        """Takes a string from one of the Scanner methods and returns a doc with
+        both the original image and the transcribed text."""
+        result = Document()
+        result.add_heading('Results of OCR scan.', 0)
+        if not isinstance(images, collections.Iterable):
+            result.add_picture(images)
+        else:
+            for img in images:
+                result.add_picture(img)
+                result.add_paragraph(txt)
+        result.save('translation.docx')
 
     def img_to_english(self, eng_images):
         if not isinstance(eng_images, collections.Iterable):
@@ -18,6 +34,7 @@ class Scanner:
             ocr_readable_eng_img = Image.open(eng_img)
             converted_eng_img = pt.image_to_string(ocr_readable_eng_img)
             print(converted_eng_img)
+            Scanner.string_to_doc(converted_eng_img, eng_images)
             return converted_eng_img
 
     def img_to_spanish(self, spa_images):
@@ -76,7 +93,8 @@ class Scanner:
             return converted_chi_sim_txt
 
 
-def main():
+if __name__ == '__main__':
+
     obj = Scanner()
     while True:
         selection = input('Which language would you like to convert your image to text?\' 1. English 2. Spanish 3. '
@@ -104,7 +122,3 @@ def main():
             goodbye = ['¡Adiós!', 'Goodbye!', 'じゃね。', 'Tschüss!', 'Au revoir!', '再见。']
             print(random.choice(goodbye))
             break
-
-
-if __name__ == '__main__':
-    main()

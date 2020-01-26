@@ -5,9 +5,9 @@
 
  ### Requirements
 
- *   pytesseract 0.3.1.
- *   tessdata file containing all languages.
-     On macOS and Linux, this can be done by inputting ```sudo port install tesseract-<all>``` on your terminal.
+ *   pytesseract 0.3.1. (or newer). Terminal input: ```pip install pytesseract```.
+ *   python-docx. Terminal input: ```pip install python-docx```.
+ *   tessdata file containing all languages. Terminal input: ```sudo port install tesseract-<all>```.
  *   A Python interpreter.
 
  ### Startup
