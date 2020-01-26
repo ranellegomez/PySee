@@ -1,5 +1,5 @@
 # PySee (In-Progress)
- A Python program that takes images as input and uses OCR to return a file that contains the texts from those images along with the original photos.
+ A Python program that takes images containing text of one of six popular languages as input and uses optical-character recognition (OCR) to return a file that contains the texts from those images along with the original photos.
 ![Project Image](project_image.png)
  # Setup
 
@@ -29,7 +29,7 @@
 
 To add utility to the program, I added a .docx writer which takes the resultant array of strings from the OCR scanners and outputs them along their respective images a Micrsoft Word document. I chose .docx format, because of its universal usage along with the flexibility it offers for editing the appearance of the document according to one's needs.
 
-In the future, I plan on implementing a GUI for usability. 
+In the future, I plan on implementing a GUI for usability.
 
   ### Limitations
   Without a doubt, OCR is a software-engineering marvel. Gone are the days of hiring someone to tediously read and retype hundred-year-old scripts, the technology has allowed us to efficiently convert images to texts, giving access to numerous classical writings that can be opened as documents to parse while allowing human resources to be allocated to other causes.
