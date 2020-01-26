@@ -4,39 +4,39 @@ import tkinter as tk
 from tkinter import filedialog
 import collections
 import random
-import io
 from docx import Document
+from docx.shared import Inches
 
 
-
-class Scanner:
+class Utils:
     """Contains the various methods to to convert images to text of different languages."""
 
-    def string_to_doc(self, txt, images=None):
-        """Takes a string from one of the Scanner methods and returns a doc with
-        both the original image and the transcribed text."""
+    def string_to_doc(self, txt, path):
+        """Returns a .docx file with both the original image and the transcribed text."""
         result = Document()
-        print(type('dec7.png'))
-        print(type(images))
-        result.add_heading('Results of OCR scan.', 0)
-        result.add_picture('dec7.png')
-        result.add_paragraph(txt)
-        result.save('translation.docx')
+        result.add_heading('Results of OCR conversion', 0)
+        for i in range(len(path)):
+            result.add_picture(path[i], width=Inches(5.0))
+            result.add_paragraph(txt[i])
+        result.save('images_and_texts.docx')
 
-    def img_to_english(self, eng_images):
-        if not isinstance(eng_images, collections.Iterable):
-            converted_eng_img = pt.image_to_string(eng_images)
-            print(converted_eng_img)
-            return converted_eng_img
+    def img_to_english(self, eng_images, file_path=None):
+        resultant_text = []
         for eng_img in eng_images:
             ocr_readable_eng_img = Image.open(eng_img)
-            converted_eng_img = pt.image_to_string(ocr_readable_eng_img)
-            print(converted_eng_img)
-            #pic = io.BytesIO(eng_img)
-            Scanner.string_to_doc(self, converted_eng_img, eng_images)
-            return converted_eng_img
+            resultant_text.append(pt.image_to_string(ocr_readable_eng_img))
+        Utils.string_to_doc(self, resultant_text, file_path)
+        return resultant_text
 
-    def img_to_spanish(self, spa_images):
+    def img_to_spanish(self, spa_images, file_path=None):
+        resultant_text_spa = []
+        for spa_img in spa_images:
+            ocr_readable_spa_img = Image.open(spa_img)
+            resultant_text_spa.append(pt.image_to_string(ocr_readable_spa_img))
+        if file_path is not None:  # Added for unit testing when no file_path is passed.
+            Utils.string_to_doc(self, resultant_text_spa, file_path)
+        return resultant_text_spa
+
         if not isinstance(spa_images, collections.Iterable):
             converted_spa_img = pt.image_to_string(spa_images, lang='spa')
             print(converted_spa_img)
@@ -94,19 +94,20 @@ class Scanner:
 
 if __name__ == '__main__':
 
-    obj = Scanner()
+    obj = Utils()
     while True:
-        selection = input('Which language would you like to convert your image to text?\' 1. English 2. Spanish 3. '
+        selection = input('Which language would you like to convert your image to text? 1. English 2. Spanish 3. '
                           'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
         root = tk.Tk()
         root.withdraw()
         image_selection = tk.filedialog.askopenfilenames()
+        selection_path = image_selection
 
         if selection not in "1234567":
             print('Invalid choice.')
             continue
         elif selection == '1':
-            obj.img_to_english(image_selection)
+            obj.img_to_english(image_selection, selection_path)
         elif selection == '2':
             obj.img_to_spanish(image_selection)
         elif selection == '3':
