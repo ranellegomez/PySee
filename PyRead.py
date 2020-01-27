@@ -5,18 +5,23 @@ from tkinter import filedialog
 import random
 from docx import Document
 from docx.shared import Inches
+import os
 
 
 class Utils:
     """Contains the various methods to to convert images to text of different languages."""
     def string_to_doc(self, txt, path):
-        """Returns a .docx file with both the original image and the transcribed text."""
+        """Return a .docx file with both the original image and the transcribed text."""
         result = Document()
         result.add_heading('Results of OCR conversion', 0)
         for i in range(len(path)):
             result.add_picture(path[i], width=Inches(5.0))
             result.add_paragraph(txt[i])
-        result.save('images_and_OCR_texts.docx')
+        file_location_and_name = filedialog.asksaveasfilename(initialdir="/", title="Select file location and input file name.",
+                                   filetypes=([("DOCs", "*.docx .doc")]))
+        chosen_name = os.path.basename(file_location_and_name)
+        chosen_path = os.path.dirname(file_location_and_name)
+        result.save(os.path.join(chosen_path, chosen_name))
 
     def img_to_english(self, eng_images, file_path_eng):
         """Return an array of strings of all English OCR-translated files."""
@@ -81,7 +86,7 @@ if __name__ == '__main__':
                           'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
         root = tk.Tk()
         root.withdraw()
-        image_selection = tk.filedialog.askopenfilenames()
+        image_selection = tk.filedialog.askopenfilenames(title='Choose your images.', filetypes=[("PNG","*.png"),("JPEGs","*.jpeg jpg"),("GIF","*.gif"),(("BMP","*.bmp"),("tiff","*.tif tiff"))])
         selection_path = image_selection
 
         if selection not in "1234567":
