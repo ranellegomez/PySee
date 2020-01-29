@@ -95,15 +95,15 @@ if __name__ == '__main__':
         elif selection == '1':
             obj.img_to_english(image_selection, selection_path)
         elif selection == '2':
-            obj.img_to_spanish(image_selection)
+            obj.img_to_spanish(image_selection, selection_path)
         elif selection == '3':
-            obj.img_to_french(image_selection)
+            obj.img_to_french(image_selection, selection_path)
         elif selection == '4':
-            obj.img_to_german(image_selection)
+            obj.img_to_german(image_selection, selection_path)
         elif selection == '5':
-            obj.img_to_japanese(image_selection)
+            obj.img_to_japanese(image_selection, selection_path)
         elif selection == '6':
-            obj.img_to_chinese(image_selection)
+            obj.img_to_chinese(image_selection, selection_path)
         else:
             goodbye = ['¡Adiós!', 'Goodbye!', 'じゃね。', 'Tschüss!', 'Au revoir!', '再见。']
             print(random.choice(goodbye))
