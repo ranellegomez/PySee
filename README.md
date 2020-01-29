@@ -29,6 +29,8 @@
 
 To add utility to the program, I added a .docx writer which takes the resultant array of strings from the OCR scanners and outputs them along their respective images a Microsoft Word document. I chose .docx format, because of its universal usage along with the flexibility it offers for editing the appearance of the document according to one's needs.
 
+I also added the ability to choose the file location along with giving the Word Doc a custom name. This was surprisingly a challenging task to implement because of tkinter's ```asksaveasfilename``` returns the directory path along with the file name and the doc. I continuously faced errors trying pass the return value of ```asksaveasfilename``` to ```result.save```. I then used python's os-module ```split``` to cleverly separate the path name and the user-inputted file name and bind them to ```chosen_path``` and ```chosen_name```, respectively.
+
 In the future, I plan on implementing a GUI for usability.
 
   ### Limitations
