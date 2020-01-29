@@ -17,7 +17,7 @@
  3. Input ```python PyRead.py```. A user interface should appear welcoming you with language options. Select the appropriate language of the images.
  4. A window should then appear asking which photos you want to select. You can select more than one photo in the same folder.
 
- ### The design process and observations
+ # The design process and observations
 
  Writing this program did not take many lines of code. However, there was an abundance of drudgery I endured for functionality.
 
