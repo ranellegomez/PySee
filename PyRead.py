@@ -11,7 +11,7 @@ import os
 class Utils:
     """Contains the various methods to to convert images to text of different languages and returns them in a Word
     doc."""
-    def string_to_doc(self, txt, path):
+    def text_to_doc(self, txt, path):
         """Return a .docx file with both the original image and the transcribed text."""
         result = Document()
         result.add_heading('Results of OCR conversion', 0)
@@ -33,7 +33,7 @@ class Utils:
             ocr_readable_eng_img = Image.open(img)
             resultant_text.append(
                 pt.image_to_string(ocr_readable_eng_img, lang=language))
-        Utils.string_to_doc(self, resultant_text, file_path)
+        Utils.text_to_doc(self, resultant_text, file_path)
         return resultant_text
 
 
@@ -59,13 +59,13 @@ if __name__ == '__main__':
         elif selection == '2':
             obj.img_to_text(image_selection, selection_path, 'spa')
         elif selection == '3':
-            obj.img_to_french(image_selection, selection_path, 'fra')
+            obj.img_to_text(image_selection, selection_path, 'fra')
         elif selection == '4':
-            obj.img_to_german(image_selection, selection_path, 'deu')
+            obj.img_to_text(image_selection, selection_path, 'deu')
         elif selection == '5':
-            obj.img_to_japanese(image_selection, selection_path, 'jpn')
+            obj.img_to_text(image_selection, selection_path, 'jpn')
         elif selection == '6':
-            obj.img_to_chinese(image_selection, selection_path, 'chi_sim')
+            obj.img_to_text(image_selection, selection_path, 'chi_sim')
         else:
             goodbye = [
                 '¡Adiós!', 'Goodbye!', 'じゃね。', 'Tschüss!', 'Au revoir!', '再见。'
