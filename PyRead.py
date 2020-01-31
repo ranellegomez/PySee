@@ -9,7 +9,7 @@ import os
 
 
 class Utils:
-    """Contains the various methods to to convert images to text of different languages and returns them in a Word
+    """Contain the various methods to to convert images to text of different languages and returns them in a Word
     doc."""
     def text_to_doc(self, txt, path):
         """Return a .docx file with both the original image and the transcribed text."""
