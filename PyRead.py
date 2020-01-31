@@ -9,7 +9,7 @@ import os
 
 
 class Utils:
-    """Contains the various methods to to convert images to text of different languages."""
+    """Contains the various methods to to convert images to text of different languages and return them in a Word doc."""
     def string_to_doc(self, txt, path):
         """Return a .docx file with both the original image and the transcribed text."""
         result = Document()
@@ -23,59 +23,15 @@ class Utils:
         chosen_path = os.path.dirname(file_location_and_name)
         result.save(os.path.join(chosen_path, chosen_name))
 
-    def img_to_english(self, eng_images, file_path_eng):
-        """Return an array of strings of all English OCR-translated files."""
+    def img_to_text(self, images, file_path, language):
+        """Return an array of strings of all OCR-translated files."""
         resultant_text = []
-        for eng_img in eng_images:
-            ocr_readable_eng_img = Image.open(eng_img)
-            resultant_text.append(pt.image_to_string(ocr_readable_eng_img))
-        Utils.string_to_doc(self, resultant_text, file_path_eng)
+        for img in images:
+            ocr_readable_eng_img = Image.open(img)
+            resultant_text.append(pt.image_to_string(ocr_readable_eng_img, lang=language))
+        Utils.string_to_doc(self, resultant_text, file_path)
         return resultant_text
 
-    def img_to_spanish(self, spa_images, file_path_spa):
-        """Return an array of strings of all Spanish OCR-translated files."""
-        resultant_text_spa = []
-        for spa_img in spa_images:
-            ocr_readable_spa_img = Image.open(spa_img)
-            resultant_text_spa.append(pt.image_to_string(ocr_readable_spa_img))
-        Utils.string_to_doc(self, resultant_text_spa, file_path_spa)
-        return resultant_text_spa
-
-    def img_to_french(self, fra_images, file_path_fra):
-        """Return an array of strings of all French OCR-translated files."""
-        resultant_text_fra = []
-        for fra_img in fra_images:
-            ocr_readable_fra_img = Image.open(fra_img)
-            resultant_text_fra.append(pt.image_to_string(ocr_readable_fra_img))
-        Utils.string_to_doc(self, resultant_text_fra, file_path_fra)
-        return resultant_text_fra
-
-    def img_to_german(self, deu_images, file_path_deu):
-        """Return an array of strings of all German OCR-translated files."""
-        resultant_text_deu = []
-        for deu_img in deu_images:
-            ocr_readable_deu_img = Image.open(deu_img)
-            resultant_text_deu.append(pt.image_to_string(ocr_readable_deu_img))
-        Utils.string_to_doc(self, resultant_text_deu, file_path_deu)
-        return resultant_text_deu
-
-    def img_to_japanese(self, jpn_images, file_path_jpn):
-        """Return an array of strings of all Japanese OCR-translated files."""
-        resultant_text_jpn = []
-        for jpn_img in jpn_images:
-            ocr_readable_jpn_img = Image.open(jpn_img)
-            resultant_text_jpn.append(pt.image_to_string(ocr_readable_jpn_img))
-        Utils.string_to_doc(self, resultant_text_jpn, file_path_jpn)
-        return resultant_text_jpn
-
-    def img_to_chinese(self, chi_sim_images, file_path_chi_sim):
-        """Return an array of strings of all simplified Chinese OCR-translated files."""
-        resultant_text_chi_sim = []
-        for chi_sim_img in chi_sim_images:
-            ocr_readable_chi_sim_img = Image.open(chi_sim_img)
-            resultant_text_chi_sim.append(pt.image_to_string(ocr_readable_chi_sim_img))
-        Utils.string_to_doc(self, resultant_text_chi_sim, file_path_chi_sim)
-        return resultant_text_chi_sim
 
 
 if __name__ == '__main__':
@@ -86,24 +42,23 @@ if __name__ == '__main__':
                           'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
         root = tk.Tk()
         root.withdraw()
-        image_selection = tk.filedialog.askopenfilenames(title='Choose your images.', filetypes=[("PNG","*.png"),("JPEGs","*.jpeg jpg"),("GIF","*.gif"),(("BMP","*.bmp"),("tiff","*.tif tiff"))])
-        selection_path = image_selection
+        image_selection, selection_path = tk.filedialog.askopenfilenames(title='Choose your images.', filetypes=[("PNG","*.png"),("JPEGs","*.jpeg jpg"),("GIF","*.gif"),(("BMP","*.bmp"),("tiff","*.tif tiff"))])
 
         if selection not in "1234567":
             print('Invalid choice.')
             continue
         elif selection == '1':
-            obj.img_to_english(image_selection, selection_path)
+            obj.img_to_text(image_selection, selection_path, 'eng')
         elif selection == '2':
-            obj.img_to_spanish(image_selection, selection_path)
+            obj.img_to_text(image_selection, selection_path, 'spa')
         elif selection == '3':
-            obj.img_to_french(image_selection, selection_path)
+            obj.img_to_french(image_selection, selection_path, 'fra')
         elif selection == '4':
-            obj.img_to_german(image_selection, selection_path)
+            obj.img_to_german(image_selection, selection_path, 'deu')
         elif selection == '5':
-            obj.img_to_japanese(image_selection, selection_path)
+            obj.img_to_japanese(image_selection, selection_path, 'jpn')
         elif selection == '6':
-            obj.img_to_chinese(image_selection, selection_path)
+            obj.img_to_chinese(image_selection, selection_path, 'chi_sim')
         else:
             goodbye = ['¡Adiós!', 'Goodbye!', 'じゃね。', 'Tschüss!', 'Au revoir!', '再见。']
             print(random.choice(goodbye))

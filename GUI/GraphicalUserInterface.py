@@ -15,59 +15,51 @@ def main():
     language_choice.pack()
 
 
-    labelTest = tk.Label(text="", font=('Helvetica', 12), fg='red')
-    labelTest.pack(side="top")
-
-    def callback(*args):
-        labelTest.configure(text="The selected item is {}".format(variable.get()))
-
-    variable.trace('w', callback)
-
-
 
 
     def askopenfile():
-        global filename
         filename = tk.filedialog.askopenfilenames(title='Choose your images.', filetypes=[("PNG", "*.png"),
                                                                                           ("JPEGs", "*.jpeg jpg"),
                                                                                           ("GIF", "*.gif"),
                                                                                           (("BMP", "*.bmp"), (
                                                                                               "tiff", "*.tif tiff"))])
+        print(filename)
+        file_path = filename
+        obj = PyRead.Utils()
+        if variable.get() == 'English':
+            print(filename)
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_english(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+        elif variable.get() == 'Spanish':
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_spanish(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+        elif variable.get() == 'French':
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_french(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+        elif variable.get() == 'German':
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_german(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+        elif variable.get() == 'Japanese':
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_japanese(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+        else:
+            start_conversion = tk.ttk.Button(root, text='Start conversion.',
+                                             command=lambda: PyRead.Utils.img_to_chinese(obj, filename, file_path))
+            start_conversion.pack(side=tk.BOTTOM)
+
     choose_file = tk.ttk.Button(big_frame, text='Choose your file(s) to be converted.',
                                 command=lambda:askopenfile())
 
     choose_file.pack()
-    print(filename)
-    file_path = filename
-    print(file_path)
 
 
-    obj = PyRead.Utils()
-    if variable.get() == 'English':
-        print(filename)
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_english(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
-    elif variable.get() == 'Spanish':
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_spanish(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
-    elif variable.get() == 'French':
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_french(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
-    elif variable.get() == 'German':
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_german(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
-    elif variable.get() == 'Japanese':
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_japanese(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
-    else:
-        start_conversion = tk.ttk.Button(root, text='Start conversion.',
-                                         command=lambda: PyRead.Utils.img_to_chinese(obj, filename, file_path))
-        start_conversion.pack(side=tk.BOTTOM)
+
+
 
     root.mainloop()  # Window doesn't close until user exits window.
 
