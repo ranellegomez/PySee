@@ -17,7 +17,10 @@ class TestPyRead(unittest.TestCase):
         expected = """Staying up for the 61B discussion signup, looking at increased grade bins, writing code: these
 are a few of my favorite things."""
         print(pr.Utils.img_to_english(self, favorite_selection, favorite_path))
-        self.assertEqual(expected, pr.Utils.img_to_english(self, favorite_selection, favorite_path)[0])
+        self.assertEqual(
+            expected,
+            pr.Utils.img_to_english(self, favorite_selection,
+                                    favorite_path)[0])
 
     def test_spanish(self):
         curr_directory = sys.path[0]
