@@ -46,11 +46,12 @@ if __name__ == '__main__':
             'French 4. German 5. Japanese 6. Simplified Chinese 7. Exit\n')
         root = tk.Tk()
         root.withdraw()
-        image_selection, selection_path = tk.filedialog.askopenfilenames(
+        image_selection = tk.filedialog.askopenfilenames(
             title='Choose your images.',
             filetypes=[("PNG", "*.png"), ("JPEGs", "*.jpeg jpg"),
                        ("GIF", "*.gif"),
                        (("BMP", "*.bmp"), ("tiff", "*.tif tiff"))])
+        selection_path = image_selection
         if selection not in "1234567":
             print('Invalid choice.')
             continue

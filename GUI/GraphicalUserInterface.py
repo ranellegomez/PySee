@@ -73,7 +73,7 @@ def main():
                                 text='Choose your file(s) to be converted.',
                                 command=lambda: askopenfile())
     choose_file.pack()
-    root.mainloop()
+    root.mainloop() 
 
 
 if __name__ == '__main__':
