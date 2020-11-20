@@ -31,7 +31,6 @@ To add utility to the program, I added a Word-doc writer which takes the resulta
 
 I also added the ability to choose the file location along with giving the Word Doc a custom name. This was surprisingly a challenging task to implement because tkinter's ```asksaveasfilename``` returns the directory path along with the file name and the extension _.docx_. I faced errors attempting to pass the return value of ```asksaveasfilename``` to ```result.save```. I then used python's os-module ```split``` to cleverly separate the path name and the user-inputted file name and bind them to ```chosen_path``` and ```chosen_name```, respectively.
 
-I am writing the GUI. Please stay tuned.
 
   ### Limitations
   Without a doubt, OCR is a software-engineering marvel. Gone are the days of hiring someone to tediously read and retype hundred-year-old scripts, the technology has allowed us to efficiently convert images to texts, giving access to numerous classical writings that can be opened as documents to parse while allowing human resources to be allocated to other causes.
