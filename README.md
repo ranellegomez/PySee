@@ -1,4 +1,4 @@
-# PySee (In progress)
+# PySee 
  A Python program that takes images containing text of one of six popular languages as input and uses optical-character recognition (OCR) to return a file that contains the texts from those images along with the original photos.
 ![Project Image](project_image.png)
  # Setup
